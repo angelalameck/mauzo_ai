@@ -1,0 +1,11 @@
+backend/Lib/
+backend/Scripts/
+backend/Include/
+backend/pyvenv.cfg
+
+__pycache__/
+*.pyc
+*.pyo
+
+.env
+db.sqlite3
