@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Business - Forgot Password</title>
+    <style>
+        :root {
+            --primary-green: #2ecc71;
+            --dark-green: #27ae60;
+            --glass-white: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #90EE90;
+            /* Matches the animation from your main page for consistency */
+            animation: anime 15s linear infinite;
+        }
+
+        @keyframes anime {
+            0%   { background-color: #90EE90; }
+            33%  { background-color: #7fffd4; }
+            66%  { background-color: #32CD32; }
+            100% { background-color: #27ae60; }
+        }
+
+        .main-container {
+            display: flex;
+            background: var(--glass-white);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            overflow: hidden;
+            max-width: 750px;
+            width: 90%;
+        }
+
+        .img-section {
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .img-section img {
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        .box {
+            padding: 40px;
+            flex: 1;
+        }
+
+        .login h2 {
+            margin-top: 0;
+            color: var(--dark-green);
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--primary-green);
+            display: inline-block;
+            margin-bottom: 25px;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        form label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        /* Specific styling for the OTP field to make it stand out */
+        #otp {
+            letter-spacing: 4px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+            border: 2px solid #eee;
+        }
+
+        .cbutton {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .cbutton:hover {
+            background-color: var(--dark-green);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 650px) {
+            .main-container { flex-direction: column; }
+            .img-section { order: 2; }
+            .box { order: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="img-section">
+        <img src="hand.jpeg" alt="Security" width="280" height="260">
+    </div>
+
+    <div class="box">
+        <div class="login"><h2>CHANGE PASSWORD</h2></div>
+        
+        <form id="form">
+            <label for="iaccount">Account name:</label>
+            <input type="text" name="naccount" id="iaccount" placeholder="Write your email">
+            
+            <label for="otp">6 digit OTP:</label>
+            <input
+                required
+                type="text"
+                id="otp"
+                autocomplete="one-time-code"
+                inputmode="numeric"
+                maxlength="6"
+                pattern="\d{6}"
+                placeholder="000000"
+            >
+            
+            <button type="button" class="cbutton" id="ibutton" onclick="cr()">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// Original Logic Maintained
+function cr() {
+    var x = document.getElementById("otp").value;
+    var y = document.getElementById("iaccount").value;
+    
+    if (y == "") {
+        window.alert("please fill the email Account");
+    } else if (x == "000000" && y != "") {
+        document.getElementById("otp").value = "";
+        document.getElementById("iaccount").value = "";
+        const link = "new password.html";
+        window.open(link, "_self"); // Changed to _self to keep user in same tab
+    } else {
+        window.alert("wrong otp");
+    }
+}
+
+// Enter-to-next-field functionality maintained
+document.addEventListener("DOMContentLoaded", function () {
+    const inputs = document.querySelectorAll("#form input");
+    inputs.forEach((input, index) => {
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                const nextInput = inputs[index + 1];
+                if (nextInput) {
+                    nextInput.focus();
+                } else {
+                    cr(); // Submit if on the last input
+                }
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

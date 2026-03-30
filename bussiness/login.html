@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Business</title>
+    <style>
+        body {
+            background-color: #90EE90;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        /* Container for both the image and the form */
+        .main-container {
+            display: flex;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Styling the Image side */
+        .img-container img {
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Styling the Form side */
+        .box {
+            padding: 40px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login h2 {
+            color: green;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Form elements layout */
+        #form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Adds space between inputs automatically */
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 13px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .cbutton {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .cbutton:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="img-container">
+        <img src="man.jpeg" height="350" width="300" alt="Login Illustration">
+    </div>
+
+    <div class="box">
+        <div class="login"><h2>LOGIN</h2></div>
+        <form id="form">
+            <div class="input-group">
+                <label for="iaccount">Account name:</label>
+                <input type="text" name="naccount" id="iaccount" class="caccount" placeholder="write your email">
+            </div>
+
+            <div class="input-group">
+                <label for="ipaccount">Password:</label>
+                <input type="password" name="npaccount" id="ipaccount" class="cpaccount" placeholder="password">
+            </div>
+
+            <button type="button" class="cbutton" id="ibutton" onclick="pr()">LOGIN</button>
+        </form>
+    </div>
+</div>
+
+<script>
+/* YOUR LOGIC REMAINS UNCHANGED */
+function pr() {
+               var x = document.getElementById('iaccount').value;
+               var y = document.getElementById('ipaccount').value;
+               if (x == 'el' && y == 'eld2005') {
+                                                 const link = "Homepage.html";
+                                                 window.open(link, '_blank');
+                                                 document.getElementById('iaccount').value = '';
+                                                 document.getElementById('ipaccount').value = '';
+                                                }
+             }
+document.addEventListener("DOMContentLoaded", function () {
+    const inputs = document.querySelectorAll("#form input");
+    inputs.forEach((input, index) => {
+        input.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); 
+                const nextInput = inputs[index + 1];
+                if (nextInput) {
+                    nextInput.focus();
+                } 
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
